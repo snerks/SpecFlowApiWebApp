@@ -132,10 +132,10 @@ this.FeatureBackground();
  testRunner.When("the weather forecasts are requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "date",
-                            "temperatureC",
-                            "temperatureF",
-                            "summary"});
+                            "Date",
+                            "TemperatureC",
+                            "TemperatureF",
+                            "Summary"});
                 table1.AddRow(new string[] {
                             "2020-12-01",
                             "55",

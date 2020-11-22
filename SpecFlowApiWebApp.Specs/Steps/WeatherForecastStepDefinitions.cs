@@ -15,7 +15,6 @@ namespace SpecFlowApiWebApp.Specs.Steps
     [Binding]
     public sealed class WeatherForecastStepDefinitions
     {
-
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         private readonly ScenarioContext _scenarioContext;

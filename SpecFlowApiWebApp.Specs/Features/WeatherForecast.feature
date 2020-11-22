@@ -14,8 +14,8 @@ Background:
 Scenario: Get weather forecasts
 	When the weather forecasts are requested
 	Then the result should be correct
-	|date|temperatureC|temperatureF|summary|
-	|2020-12-01|55|130|Bracing|
+		| Date       | TemperatureC | TemperatureF | Summary |
+		| 2020-12-01 | 55           | 130          | Bracing |
 
 Scenario: Get lottery numbers
 	When the lottery numbers are requested

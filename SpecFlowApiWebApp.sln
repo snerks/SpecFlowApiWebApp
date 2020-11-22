@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowApiWebApp", "SpecFlowApiWebApp\SpecFlowApiWebApp.csproj", "{EC205C1B-61BB-4A6E-AF5B-DC62AA70104A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowApiWebApp.Specs", "SpecFlowApiWebApp.Specs\SpecFlowApiWebApp.Specs.csproj", "{A6E7A367-56B8-4558-9347-EF2F4F6418B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC205C1B-61BB-4A6E-AF5B-DC62AA70104A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC205C1B-61BB-4A6E-AF5B-DC62AA70104A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC205C1B-61BB-4A6E-AF5B-DC62AA70104A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC205C1B-61BB-4A6E-AF5B-DC62AA70104A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E7A367-56B8-4558-9347-EF2F4F6418B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E7A367-56B8-4558-9347-EF2F4F6418B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E7A367-56B8-4558-9347-EF2F4F6418B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E7A367-56B8-4558-9347-EF2F4F6418B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0F2BA1C-FF0A-4834-95DE-40F7E153F847}
+	EndGlobalSection
+EndGlobal

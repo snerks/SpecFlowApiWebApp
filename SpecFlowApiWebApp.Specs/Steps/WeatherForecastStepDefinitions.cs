@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Newtonsoft.Json;
 using TechTalk.SpecFlow;
-using Xunit;
 using TechTalk.SpecFlow.Assist;
 
 namespace SpecFlowApiWebApp.Specs.Steps
@@ -52,30 +49,9 @@ namespace SpecFlowApiWebApp.Specs.Steps
         //    _scenarioContext.Pending();
         //}
 
-        [When("the weather forecasts are requested")]
-        public async Task WhenTheWeatherForecastsAreRequested()
+        [Given(@"the web server and client are running")]
+        public async Task GivenTheWebServerAndClientAreRunning()
         {
-            //TODO: implement act (action) logic
-
-            //_scenarioContext.Pending();
-
-            //var webHostBuilder =
-            //    Program
-            //    .CreateHostBuilder(Array.Empty<string>());
-            //// .UseContentRoot(contentRootPath);
-
-            //var server = new TestServer(webHostBuilder);
-            //var client = server.CreateClient();
-
-            //// Act
-            //var response = await client.GetAsync("/api/eventInfos");
-
-            //var contentString = await response.Content.ReadAsStringAsync();
-
-            //// Assert
-            //Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
-            // Arrange
             var hostBuilder = new HostBuilder()
                 .ConfigureWebHost(webHost =>
                 {
@@ -88,30 +64,54 @@ namespace SpecFlowApiWebApp.Specs.Steps
             var host = await hostBuilder.StartAsync();
 
             // Create an HttpClient which is setup for the test host
-            var client = host.GetTestClient();
+            var httpClient = host.GetTestClient();
 
-            // Act
-            var response = await client.GetAsync("/weatherforecast");
+            _scenarioContext.Set<HttpClient>(httpClient);
+        }
 
-            // Assert
+        [When("the weather forecasts are requested")]
+        public async Task WhenTheWeatherForecastsAreRequested()
+        {
+            var httpClient = _scenarioContext.Get<HttpClient>();
+
+            var response = await httpClient.GetAsync("/weatherforecast");
+
             var responseString = await response.Content.ReadAsStringAsync();
 
             _scenarioContext.Set(responseString);
-
-            //responseString.Should().Be("This is a test");
         }
 
         [Then("the result should be correct")]
         public void ThenTheResultShouldBe(Table expectedResults)
         {
-            //TODO: implement assert (verification) logic
-            //_scenarioContext.Pending();
-
             var responseString = _scenarioContext.Get<string>();
 
-            var actualResults = JsonConvert.DeserializeObject<IEnumerable<WeatherForecast>>(responseString);
+            var actualResults =
+                JsonConvert.DeserializeObject<IEnumerable<WeatherForecast>>(responseString);
 
             expectedResults.CompareToSet<WeatherForecast>(actualResults);
+        }
+
+        [When(@"the lottery numbers are requested")]
+        public async Task WhenTheLotteryNumbersAreRequested()
+        {
+            var httpClient = _scenarioContext.Get<HttpClient>();
+
+            var response = await httpClient.GetAsync("/lotterynumbers");
+
+            //var responseString = await response.Content.ReadAsStringAsync();
+
+            _scenarioContext.Set<HttpResponseMessage>(response);
+        }
+
+        [Then(@"the result should not be found")]
+        public void ThenTheResultShouldNotBeFound()
+        {
+            var response = _scenarioContext.Get<HttpResponseMessage>();
+
+            var actual = response.StatusCode;
+
+            actual.Should().Be(HttpStatusCode.NotFound);
         }
     }
 }

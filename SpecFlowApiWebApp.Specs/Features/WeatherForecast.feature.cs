@@ -81,6 +81,15 @@ Link to a feature: [Calculator](SpecFlowApiWebApp.Specs/Features/Calculator.feat
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 10
+#line hidden
+#line 11
+ testRunner.Given("the web server and client are running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         void System.IDisposable.Dispose()
         {
             this.TestTearDown();
@@ -96,7 +105,7 @@ Link to a feature: [Calculator](SpecFlowApiWebApp.Specs/Features/Calculator.feat
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get weather forecasts", null, tagsOfScenario, argumentsOfScenario);
-#line 11
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -116,7 +125,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 12
+#line 10
+this.FeatureBackground();
+#line hidden
+#line 15
  testRunner.When("the weather forecasts are requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -129,8 +141,49 @@ this.ScenarioInitialize(scenarioInfo);
                             "55",
                             "130",
                             "Bracing"});
-#line 13
+#line 16
  testRunner.Then("the result should be correct", ((string)(null)), table1, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Get lottery numbers")]
+        [Xunit.TraitAttribute("FeatureTitle", "WeatherForecast")]
+        [Xunit.TraitAttribute("Description", "Get lottery numbers")]
+        public virtual void GetLotteryNumbers()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get lottery numbers", null, tagsOfScenario, argumentsOfScenario);
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 10
+this.FeatureBackground();
+#line hidden
+#line 21
+ testRunner.When("the lottery numbers are requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 22
+ testRunner.Then("the result should not be found", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
